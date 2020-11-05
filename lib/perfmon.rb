@@ -1,6 +1,5 @@
 require "perfmon/version"
 require 'perfmon/middleware'
-require 'yaml'
 require "perfmon/railtie" if defined? Rails
 
 module Perfmon
