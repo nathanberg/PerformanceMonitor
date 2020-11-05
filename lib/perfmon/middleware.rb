@@ -1,5 +1,14 @@
+require 'perfmon/config'
 module Perfmon
   class Middleware
+    def config
+      @config ||= Config.new
+    end
+
+    def configure
+      yield config
+    end
+
     def initialize(app)
       @app = app
     end
@@ -23,8 +32,8 @@ module Perfmon
       # Time spent
       total_time = response_time - initial_request
 
-      CSV.open('/tmp/test.csv', "a+") do |csv|
-        if File.empty?('/tmp/test.csv')
+      CSV.open(File.join(config.csv_path, config.csv_name), "a+") do |csv|
+        if File.empty?(File.join(config.csv_path, config.csv_name))
           csv << ["Initial Request Time", "Request Completed Time", "Time Taken", "Request URI", 'Request GET Params', 'PID', 'TID', 'MD5']
         end
         csv << [initial_request, response_time, total_time, request_uri, params, pid, tid, response_md5]
