@@ -1,4 +1,4 @@
-# Perfmon (AKA: Contrast Ruby Challenge Project)
+# Perfmon
 
 This is just a basic gem that will log pieces of data such as Timestamps, Request URI, and Parameters to a CSV file.
 
