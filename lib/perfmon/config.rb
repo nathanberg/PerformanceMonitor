@@ -1,13 +1,11 @@
 module Perfmon
   class Config
-    attr_writer :csv_path, :csv_name
+    attr_accessor :csv_path, :csv_name
 
-    def csv_path
-      @csv_path ||= '/tmp/'
-    end
 
-    def csv_name
-      @csv_name ||= 'perfmon.csv'
+    def initialize
+      @csv_name = 'perfmon.csv'
+      @csv_path = '/tmp/'
     end
   end
 end
