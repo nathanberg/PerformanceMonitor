@@ -7,7 +7,7 @@ RSpec.describe Perfmon do
     before :each do
       Perfmon.configure do |config|
         config.csv_path = '/tmp/'
-        config.csv_name = 'blah.csv'
+        config.csv_name = 'test.csv'
       end
       @middleware_instance = Perfmon::Middleware.new(nil)
     end
@@ -17,7 +17,9 @@ RSpec.describe Perfmon do
     end
 
     it "returns expected csv_name" do
-      expect(Perfmon.config.csv_name).to eq('blah.csv')
+      expect(Perfmon.config.csv_name).to eq('test.csv')
+    end
+
     end
   end
 end

@@ -14,7 +14,15 @@ module Perfmon
       # Request URI
       request_uri = request.path
       # Parameters
-      params = request.params.map{ |key, value| key + "==>" + value }.join('; ')
+      params = request.params.map do |key, value|
+        if key.class != String
+          key = key.to_s
+        end
+        if value.class != String
+          value = value.to_s
+        end
+        key + "==>" + value
+      end.join('; ')
       # PID
       pid = Process.pid
       # Thread ID
